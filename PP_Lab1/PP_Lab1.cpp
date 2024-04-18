@@ -52,6 +52,7 @@ vector<vector<int>> multiplyMatrices(const vector<vector<int>>& A, const vector<
 }
 
 int main() {
+    setlocale(LC_ALL, "RU");
     _mkdir("data");
 
     ofstream resultFile("data/ResultExperiment.txt");
@@ -66,15 +67,15 @@ int main() {
         writeMatrixToFile(B, "data/matrix2.txt");
 
         auto start = high_resolution_clock::now();
-        cout << "Выполняются расчеты для матриц размером" << size << "X" << size;
+        cout << "Выполняются расчеты для матриц размером" << size << "X" << size<<endl;
         auto C = multiplyMatrices(A, B);
         auto stop = high_resolution_clock::now();
 
         writeMatrixToFile(C, "data/matrixRes.txt");
 
         auto duration = duration_cast<milliseconds>(stop - start);
-        resultFile << "Для матрицы размером " << size << "x" << size << " время " << duration.count() << " ms" << endl;
-        cout << "Для матрицы размером" << size << "x" << size << " расчесты выполнены";
+        resultFile << "For matrix size" << size << "x" << size << " time -  " << duration.count() << " ms" << endl;
+        cout << "Для матрицы размером" << size << "x" << size << " расчесты выполнены " << endl;
     }
 
     resultFile.close();
